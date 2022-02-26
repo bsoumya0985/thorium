@@ -8,7 +8,7 @@ const lodash = require('lodash')
 
 
 router.get('/test-me', function (req, res) {
-    let names = [ 'Hariom', 'Arpit', 'Akash', 'Sabiha']
+    let names = ['Vipul', 'Aman', 'Srushti', 'Karuna' ]
     //Module 1 members
     logger.printMessage('thorium')
     console.log(logger.url)
@@ -46,13 +46,13 @@ router.get('/test-me', function (req, res) {
     let movie4 = ['fantasy','Pans Labyrinth']
     let movieObject = lodash.fromPairs([movie1, movie2, movie3, movie4])
     console.log('Movies object: ', movieObject)
-    res.send('My first ever api of the week!')
+    res.send('Hello FunctionUp! Welcome to my application')
 });
 
 
 router.get('/hello', function (req, res) {
     
-    res.send('My first ever api of the week!')
+    res.send('This is my first ever api of the week!')
 });
 
 module.exports = router;
