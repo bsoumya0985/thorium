@@ -11,7 +11,8 @@ router.get("/test-me", function (req, res) {
 
 router.post("/createAuthor", authorController.createAuthor)
 router.post("/createPublisher", publisherController.createPublisher)
-router.post("/createBook", bookController.createBook)
+router.put("/createBook", bookController.createBook)
 router.get("/getBooks", bookController.getBooks)
-
+router.put("/isHardCover", bookController.isHardCover)
+router.put("/updatedHardCopy", bookController.updatedHardCopy)
 module.exports = router
