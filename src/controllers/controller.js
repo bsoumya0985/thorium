@@ -1,18 +1,19 @@
 const firsttest = async function (req, res){
     let data = req
     console.log(data)
+    res.send ({msg:"First response set successfully"})
 }
 
 const  secondtest= async function (req, res){
-    console.log({msg:"second-test response set sucessfully"})
+    res.send ({msg:"second response set successfully"})
 }
 
 const thirdtest = async function (req, res){
-    console.log({msg:"Third-test response set sucessfully"})
+    res.send ({msg:"Third response set successfully"})
 }
 
 const fourthtest = async function (req, res){
-    console.log({msg:"fourth-test response set sucessfully"})
+    res.send ({msg:"Fourth response set successfully"})
 }
 
 module.exports.firsttest = firsttest
