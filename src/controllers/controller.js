@@ -1,5 +1,5 @@
 const firsttest = async function (req, res){
-    let data = req
+    let data = req.body
     console.log(data)
     res.send ({msg:"First response set successfully"})
 }
