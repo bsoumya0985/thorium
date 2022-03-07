@@ -1,24 +1,22 @@
 const mongoose = require('mongoose');
+const { stringify } = require('nodemon/lib/utils');
 
 const userSchema = new mongoose.Schema( {
-    firstName: String,
-    lastName: String,
-    mobile: {
-        type: String,
-
-        required: true
+    Name: String,
+    balance: {
+        type: Number,
+        default : 100
     },
-    emailId: String,
+    address : String,
+    age: Number,
     gender: {
         type: String,
-        enum: ["male", "female", "LGBTQ"] //"falana" will give an error
+        enum: ["male", "female", "LGBTQ"]
     },
-    age: Number,
-}, { timestamps: true });
+    isfreeappuser:{
+        type: String,
+        default : false
+    }
+},{timestamps : true});
 
-module.exports = mongoose.model('User', userSchema) //users
-
-
-
-// String, Number
-// Boolean, Object/json, array
+module.exports = mongoose.model('User', userSchema)
