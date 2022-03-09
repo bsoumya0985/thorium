@@ -41,13 +41,13 @@ const loginUser = async function (req, res) {
 };
 
 const getUserData = async function (req, res) {
-  let token = req.headers["x-Auth-token"];
-  if (!token) token = req.headers["x-auth-token"];
+  // let token = req.headers["x-Auth-token"];
+  // if (!token) token = req.headers["x-auth-token"];
 
-  //If no token is present in the request header return error
-  if (!token) return res.send({ status: false, msg: "token must be present" });
+  // //If no token is present in the request header return error
+  // if (!token) return res.send({ status: false, msg: "token must be present" });
 
-  console.log(token);
+  //console.log(token);
   
   // If a token is present then decode the token with verify function
   // verify takes two inputs:
@@ -89,11 +89,11 @@ const postMessage = async function (req, res) {
     // Check if the token is present
     // Check if the token present is a valid token
     // Return a different error message in both these cases
-    let token = req.headers["x-auth-token"]
-    if(!token) return res.send({status: false, msg: "token must be present in the request header"})
-    let decodedToken = jwt.verify(token, 'functionup-thorium')
+    // let token = req.headers["x-auth-token"]
+    // if(!token) return res.send({status: false, msg: "token must be present in the request header"})
+    // let decodedToken = jwt.verify(token, 'functionup-thorium')
 
-    if(!decodedToken) return res.send({status: false, msg:"token is not valid"})
+    // if(!decodedToken) return res.send({status: false, msg:"token is not valid"})
     
     //userId for which the request is made. In this case message to be posted.
     let userToBeModified = req.params.userId
