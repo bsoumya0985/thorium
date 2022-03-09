@@ -1,14 +1,15 @@
+const req = require("express/lib/request");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 
-const createUser = async function (abcd, xyz) {
+const createUser = async function (req, res) {
   //You can name the req, res objects anything.
   //but the first parameter is always the request 
   //the second parameter is always the response
-  let data = abcd.body;
+  let data = req.body;
   let savedData = await userModel.create(data);
-  console.log(abcd.newAtribute);
-  xyz.send({ msg: savedData });
+  console.log(res.newAtribute);
+  res.send({ msg: savedData });
 };
 
 const loginUser = async function (req, res) {
@@ -41,13 +42,13 @@ const loginUser = async function (req, res) {
 };
 
 const getUserData = async function (req, res) {
-  // let token = req.headers["x-Auth-token"];
-  // if (!token) token = req.headers["x-auth-token"];
+  let token = req.headers["x-Auth-token"];
+  if (!token) token = req.headers["x-auth-token"];
 
   // //If no token is present in the request header return error
-  // if (!token) return res.send({ status: false, msg: "token must be present" });
+  if (!token) return res.send({ status: false, msg: "token must be present" });
 
-  //console.log(token);
+  console.log(token);
   
   // If a token is present then decode the token with verify function
   // verify takes two inputs:
@@ -84,16 +85,18 @@ const updateUser = async function (req, res) {
   res.send({ status: updatedUser, data: updatedUser });
 };
 
+
+
 const postMessage = async function (req, res) {
     let message = req.body.message
     // Check if the token is present
     // Check if the token present is a valid token
     // Return a different error message in both these cases
-    // let token = req.headers["x-auth-token"]
-    // if(!token) return res.send({status: false, msg: "token must be present in the request header"})
-    // let decodedToken = jwt.verify(token, 'functionup-thorium')
+    let token = req.headers["x-auth-token"]
+    if(!token) return res.send({status: false, msg: "token must be present in the request header"})
+    let decodedToken = jwt.verify(token, 'functionup-thorium')
 
-    // if(!decodedToken) return res.send({status: false, msg:"token is not valid"})
+    if(!decodedToken) return res.send({status: false, msg:"token is not valid"})
     
     //userId for which the request is made. In this case message to be posted.
     let userToBeModified = req.params.userId
